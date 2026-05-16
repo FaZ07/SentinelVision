@@ -1,4 +1,8 @@
-# 🔭 SentinelVision
+# SentinelVision
+
+![CI](https://github.com/FaZ07/SentinelVision/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ### Zero-Shot Industrial Anomaly Detection — no labels, no training, no API, fully offline
 
@@ -129,6 +133,22 @@ Interactive docs at `http://localhost:8000/docs`.
   dependency, threshold-independent quality metric.
 - **ONNX parity** is asserted to `< 1e-3` max abs diff so the edge model is provably
   the same as the served model.
+
+---
+
+## Screenshots
+
+| Gallery Builder | Anomaly Inspector | Benchmark |
+|---|---|---|
+| Upload good samples → bank builds in seconds | Heat-map pinpoints the defect on the part | AUROC + confusion matrix on held-out set |
+
+> Run the app locally to see the live UI — `make_sample_data.py` generates a ready-to-use dataset.
+
+---
+
+## License
+
+MIT
 
 ---
 
