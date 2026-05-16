@@ -47,9 +47,9 @@ def build_overlay(
     weight = np.zeros((c, c), dtype="float32")
 
     for tile, score in zip(tiles[1:], tile_scores[1:]):
-        l, t, r, b = tile.box
-        accum[t:b, l:r] += float(score)
-        weight[t:b, l:r] += 1.0
+        left, t, r, b = tile.box
+        accum[t:b, left:r] += float(score)
+        weight[t:b, left:r] += 1.0
     weight[weight == 0] = 1.0
     field = accum / weight
 
