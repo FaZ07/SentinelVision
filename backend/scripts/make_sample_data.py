@@ -74,8 +74,8 @@ def main() -> None:
     dump(data / "gallery", 32, 0, defect=False)
     dump(data / "test" / "good", 12, 1000, defect=False)
     dump(data / "test" / "defect", 12, 2000, defect=True)
-    print(f"✅ Synthetic dataset written under {data}")
-    print("   gallery/ = 32 good · test/good = 12 · test/defect = 12")
+    print(f"[OK] Synthetic dataset written under {data}")
+    print("     gallery/ = 32 good | test/good = 12 | test/defect = 12")
 
 
 if __name__ == "__main__":
