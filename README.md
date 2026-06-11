@@ -153,3 +153,21 @@ MIT
 ---
 
 *Built by Mohamed Fazil — AI/ML & Full-Stack Engineer.*
+
+---
+
+## 📊 Measured results — MVTec AD (industry-standard benchmark)
+
+Real numbers from `backend/scripts/mvtec_bench.py`, reproducible end-to-end.
+Setup: **20 known-good samples per category** (no defect ever shown, no training,
+frozen CLIP ViT-B/32, CPU-only), scored on the full official test sets:
+
+| Category | Test set | Image AUROC | Precision | Recall | F1 |
+|---|---|---|---|---|---|
+| bottle    | 20 good / 63 defect | **0.994** | 0.969 | 0.984 | 0.976 |
+| hazelnut  | 40 good / 70 defect | 0.904 | 0.765 | 0.929 | 0.839 |
+| metal_nut | 22 good / 93 defect | 0.881 | 0.972 | 0.742 | 0.842 |
+| **mean**  | 235 images | **0.926** | | | |
+
+Reproduce: download any [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad)
+category, then `python scripts/mvtec_bench.py <mvtec_root> bottle 20`.
