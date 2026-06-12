@@ -158,16 +158,25 @@ MIT
 
 ## 📊 Measured results — MVTec AD (industry-standard benchmark)
 
-Real numbers from `backend/scripts/mvtec_bench.py`, reproducible end-to-end.
-Setup: **20 known-good samples per category** (no defect ever shown, no training,
-frozen CLIP ViT-B/32, CPU-only), scored on the full official test sets:
+Real numbers from `backend/scripts/mvtec_bench.py`, reproducible end-to-end --
+**all 15 categories, full official test sets**. Setup: 20 known-good samples
+per category, no defect ever shown, no training, frozen CLIP ViT-B/32, CPU-only.
 
-| Category | Test set | Image AUROC | Precision | Recall | F1 |
+| Category | AUROC | Category | AUROC | Category | AUROC |
 |---|---|---|---|---|---|
-| bottle    | 20 good / 63 defect | **0.994** | 0.969 | 0.984 | 0.976 |
-| hazelnut  | 40 good / 70 defect | 0.904 | 0.765 | 0.929 | 0.839 |
-| metal_nut | 22 good / 93 defect | 0.881 | 0.972 | 0.742 | 0.842 |
-| **mean**  | 235 images | **0.926** | | | |
+| leather | **0.997** | carpet | 0.961 | capsule | 0.782 |
+| wood | **0.996** | hazelnut | 0.904 | grid | 0.744 |
+| bottle | **0.994** | zipper | 0.893 | toothbrush | 0.733 |
+| tile | **0.988** | metal_nut | 0.881 | screw | 0.663 |
+| | | cable | 0.863 | pill | 0.647 |
+| | | transistor | 0.830 | | |
+
+**Mean image-level AUROC: 0.858 across all 15 categories** (1,725 test images).
+
+Honest read: textures and large-defect objects are near-perfect (>= 0.96 on five
+categories); fine-grained categories (screw, pill, toothbrush) expose the limit
+of coarse CLIP tiles -- the same categories that are hardest for published
+zero-/few-shot CLIP methods. No cherry-picking: the full table is the claim.
 
 Reproduce: download any [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad)
 category, then `python scripts/mvtec_bench.py <mvtec_root> bottle 20`.
